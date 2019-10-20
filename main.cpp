@@ -51,27 +51,27 @@ public:
     }
 
     size_t createObject(Node &owner) {
-        objects.push_back(std::unique_ptr<PhysicsComponent>(new PhysicsComponent(owner)));
+        objects.push_back(std::shared_ptr<PhysicsComponent>(new PhysicsComponent(owner)));
         return objects.size()-1;
     }
 };
 
-class SquareNode: public Node {
-public:
-    size_t physicsComponentIdx;
-    size_t collisionShapeIdx;
-    PhysicsComponent *physicsComponent;
-    RectCollisionShape *collisionShape;
+// class SquareNode: public Node {
+// public:
+//     size_t physicsComponentIdx;
+//     size_t collisionShapeIdx;
+//     PhysicsComponent *physicsComponent;
+//     RectCollisionShape *collisionShape;
     
-    SquareNode(Physics &physics) {
-        physicsComponentIdx = physics.createObject(*this);
-        physicsComponent = physics.getObject(physicsComponentIdx).get();
+//     SquareNode(Physics &physics) {
+//         physicsComponentIdx = physics.createObject(*this);
+//         physicsComponent = physics.getObject(physicsComponentIdx).get();
         
-        physicsComponent->objects.push_back(std::unique_ptr<CollisionShape>(new RectCollisionShape(0.f,0.f,100.f,100.f)));
-        collisionShapeIdx = physicsComponent->objects.size();
-        collisionShape = physicsComponent->getObject<RectCollisionShape>(collisionShapeIdx);
-    }
-};
+//         physicsComponent->objects.push_back(std::unique_ptr<CollisionShape>(new RectCollisionShape(0.f,0.f,100.f,100.f)));
+//         collisionShapeIdx = physicsComponent->objects.size();
+//         collisionShape = physicsComponent->getObject<RectCollisionShape>(collisionShapeIdx);
+//     }
+// };
 
 int main() {
     Physics physics;
