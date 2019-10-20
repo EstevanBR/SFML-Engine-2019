@@ -47,7 +47,7 @@ void GameWindow::process(float delta) {
 
     clear();
     //
-    view.rotate(0.01);
+    view.rotate(90.f * delta);
     setView(view);
     
     for (auto d: drawables) {

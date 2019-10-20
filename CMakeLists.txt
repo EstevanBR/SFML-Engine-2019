@@ -12,5 +12,10 @@ add_executable(
     Node.hpp
     Collection.hpp
     Collection.cpp
+    RectCollisionShape.hpp
+    RectCollisionShape.cpp
+    CircleCollisionShape.hpp
+    CircleCollisionShape.cpp
+    CollisionShape.hpp
 )
 target_link_libraries (HelloWorld sfml-graphics sfml-window sfml-system)

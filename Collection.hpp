@@ -4,10 +4,10 @@
 #include <vector>
 #include <memory>
 
-template <class T>
+template <class T1>
 class Collection {
 private:
-    void removeObject(T& t) {
+    void removeObject(T1 &t) {
         objects.erase(
             std::remove(
                 objects.begin(),
@@ -21,12 +21,13 @@ private:
 public:
     ~Collection() {}
     Collection() {}
-    std::vector<T> objects;
-    T& getObject(size_t idx) {
+    std::vector<T1> objects;
+    T1& getObject(size_t idx) {
         return objects[idx];
     }
+
     size_t createObject() {
-        objects.push_back(T());
+        objects.push_back(T1());
         return objects.size()-1;
     }
 };
