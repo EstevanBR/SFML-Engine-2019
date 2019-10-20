@@ -11,7 +11,7 @@
 
 class Physics;
 
-class PhysicsComponent: public Collection<std::unique_ptr<CollisionShape>> {
+class PhysicsComponent: public Collection<std::shared_ptr<CollisionShape>> {
 public:
     Node &owner;
 
@@ -32,7 +32,7 @@ public:
     }
 
 };
-class Physics: public Collection<std::unique_ptr<PhysicsComponent>> {
+class Physics: public Collection<std::shared_ptr<PhysicsComponent>> {
 private:
     
 public:
@@ -53,6 +53,23 @@ public:
     size_t createObject(Node &owner) {
         objects.push_back(std::unique_ptr<PhysicsComponent>(new PhysicsComponent(owner)));
         return objects.size()-1;
+    }
+};
+
+class SquareNode: public Node {
+public:
+    size_t physicsComponentIdx;
+    size_t collisionShapeIdx;
+    PhysicsComponent *physicsComponent;
+    RectCollisionShape *collisionShape;
+    
+    SquareNode(Physics &physics) {
+        physicsComponentIdx = physics.createObject(*this);
+        physicsComponent = physics.getObject(physicsComponentIdx).get();
+        
+        physicsComponent->objects.push_back(std::unique_ptr<CollisionShape>(new RectCollisionShape(0.f,0.f,100.f,100.f)));
+        collisionShapeIdx = physicsComponent->objects.size();
+        collisionShape = physicsComponent->getObject<RectCollisionShape>(collisionShapeIdx);
     }
 };
 
@@ -92,7 +109,7 @@ int main() {
         
         rect1.move(sf::Vector2f(10.f * delta, 0.0));
         rectShape1.left += 10.f * delta;
-        
+
         if (rectShape1.intersects(rectShape2)) {
             rect1.setFillColor(sf::Color(0xffffffff));
             rect2.setFillColor(sf::Color(0xffffffff));
