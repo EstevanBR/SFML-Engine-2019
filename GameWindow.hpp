@@ -4,6 +4,7 @@
 #include <memory>
 #include <SFML/Graphics.hpp>
 #include "Node.hpp"
+#include "Message.hpp"
 
 
 class EventHandler {
@@ -11,7 +12,7 @@ public:
     virtual void handleEvent(sf::Event &event) = 0;
 };
 
-class GameWindow: public Node, public sf::RenderWindow {
+class GameWindow: public Node, public sf::RenderWindow, public MessageDispatcher {
 public:
     GameWindow(sf::VideoMode mode, const sf::String &title, sf::Uint32 style=sf::Style::Default, const sf::ContextSettings &settings=sf::ContextSettings());
     void process(float delta) override;

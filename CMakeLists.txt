@@ -17,5 +17,6 @@ add_executable(
     CircleCollisionShape.hpp
     CircleCollisionShape.cpp
     CollisionShape.hpp
+    Message.hpp
 )
 target_link_libraries (HelloWorld sfml-graphics sfml-window sfml-system)

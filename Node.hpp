@@ -5,16 +5,20 @@
 #include <memory>
 #include <assert.h>
 
+#include <SFML/Graphics.hpp>
+
+#include "Message.hpp"
+
 class Node;
 typedef std::weak_ptr<Node> WeakNode;
 typedef std::shared_ptr<Node> SharedNode;
 
-class Node {
+class Node: public MessageHandler {
 private:
     WeakNode parent;
 protected:
 public:
-    std::string name = "test";
+    std::string name;
     virtual void process(float delta) {};
     
     std::vector<SharedNode> children;
@@ -25,6 +29,14 @@ public:
     
     bool hasParent();
     WeakNode getParent();
+    template <class T>
+    void handleMessage(Message<T> message) {
+        MessageHandler::handleMessage(message);
+    }
+    
 };
+
+template<>
+void Node::handleMessage(Message<sf::Event> message);
 
 #endif

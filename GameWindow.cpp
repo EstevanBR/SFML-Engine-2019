@@ -7,14 +7,12 @@ GameWindow::GameWindow(
     sf::Uint32 style,
     const sf::ContextSettings &settings): sf::RenderWindow(mode, title, style, settings) {
     
-    std::cout << "GameWindow::GameWindow()" << std::endl;
-    view.setSize(sf::Vector2f(640.f, 480.f));
-    view.setCenter(sf::Vector2f(0.0, 10.0));
-    setView(view);
+    view.setSize(sf::Vector2f(getSize()));
+    view.setCenter(sf::Vector2f(0.0, 0.0));
 }
 
 void GameWindow::onResize() {
-    std::cout << "GameWindow::onResize()" << std::endl;
+    view.setSize(sf::Vector2f(getSize()));
 }
 
 void GameWindow::addEventHandler(EventHandler *handler) {
@@ -38,6 +36,8 @@ void GameWindow::process(float delta) {
             assert(handler.get() != nullptr);
             handler->handleEvent(event);
         }
+        auto message = Message<sf::Event>("event", event);
+        dispatchMessage(message);
     }
     // objects
     for (auto node: children) {
