@@ -2,6 +2,11 @@
 #include "RectCollisionShape.hpp"
 #include "CircleCollisionShape.hpp"
 
+RectCollisionShape::RectCollisionShape(float left, float top, float width, float height): sf::FloatRect(left, top, width, height) {
+    rectShape.setPosition(sf::Vector2f(left, top));
+    rectShape.setSize(sf::Vector2f(width, height));
+}
+
 bool RectCollisionShape::intersects(const CollisionShape &shape) const {
     // if the circle origin is inside of the rectangle
     if (static_cast<const RectCollisionShape*>(&shape)) {

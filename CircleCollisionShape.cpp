@@ -3,6 +3,10 @@
 #include "CircleCollisionShape.hpp"
 #include "RectCollisionShape.hpp"
 
+CircleCollisionShape::CircleCollisionShape(float x, float y, float radius): FloatCircle(x,y,radius) {
+
+}
+
 bool CircleCollisionShape::intersects(const CollisionShape &shape) const {
     // if the circle origin is inside of the rectangle
     if (static_cast<const RectCollisionShape*>(&shape)) {
@@ -25,3 +29,6 @@ bool CircleCollisionShape::intersects(const CircleCollisionShape &other) const {
     float distance = sqrt((distX * distX) + (distY * distY));
     return distance <= radius+other.radius;
 }
+
+
+    

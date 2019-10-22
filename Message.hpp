@@ -5,6 +5,8 @@
 #include <vector>
 #include <iostream>
 
+#include "Collection.hpp"
+
 template<class T>
 class Message {
 public:
@@ -23,14 +25,12 @@ public:
     }
 };
 
-class MessageDispatcher {
+class MessageDispatcher: public Collection<MessageHandler> {
 public:
-    std::vector<std::weak_ptr<MessageHandler>> handlers;
     template<class T>
     void dispatchMessage(Message<T> message) {
-        std::cout << "dispatch a message!" << std::endl;
-        for (auto handler: handlers) {
-            handler.lock()->handleMessage<T>(message);
+        for (auto handler: Collection<MessageHandler>::objects) {
+            handler->handleMessage<T>(message);
         }
     }
 };

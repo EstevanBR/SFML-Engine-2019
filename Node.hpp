@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <memory>
-#include <assert.h>
 
 #include <SFML/Graphics.hpp>
 

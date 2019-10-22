@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(HelloWorld VERSION 0.1.0)
-
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(
-    HelloWorld
+project(SFML-Engine VERSION 0.1.0)
+
+set(SFML_ENGINE_SOURCES
     main.cpp
     GameWindow.cpp
     GameWindow.hpp
@@ -17,6 +16,24 @@ add_executable(
     CircleCollisionShape.hpp
     CircleCollisionShape.cpp
     CollisionShape.hpp
-    Message.hpp
+    "Message.hpp"
+    Component.hpp
+    Component.cpp
+    PhysicsComponent.hpp
+    PhysicsComponent.cpp
+    GraphicsComponent.hpp
+    GraphicsComponent.cpp
+    Physics.hpp
+    Physics.cpp
+    Graphics.hpp
+    Graphics.cpp
+    Circle.hpp
+    Input.hpp
+    Input.cpp
+    Game.cpp
+    Game.hpp
 )
-target_link_libraries (HelloWorld sfml-graphics sfml-window sfml-system)
+
+add_library(SFML-Engine SHARED ${SFML_ENGINE_SOURCES})
+target_include_directories(SFML-Engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(SFML-Engine -lsfml-graphics -lsfml-window -lsfml-system)
