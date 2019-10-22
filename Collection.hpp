@@ -4,10 +4,10 @@
 #include <vector>
 #include <memory>
 
-template <class T1>
+template <class T>
 class Collection {
 private:
-    void removeObject(T1 &t) {
+    void removeObject(std::shared_ptr<T> t) {
         objects.erase(
             std::remove(
                 objects.begin(),
@@ -21,13 +21,13 @@ private:
 public:
     ~Collection() {}
     Collection() {}
-    std::vector<T1> objects;
-    T1& getObject(size_t idx) {
+    std::vector<std::shared_ptr<T>> objects;
+    std::shared_ptr<T> getObject(size_t idx) {
         return objects[idx];
     }
 
     size_t createObject() {
-        objects.push_back(T1());
+        objects.push_back(T());
         return objects.size()-1;
     }
 };
