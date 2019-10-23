@@ -5,12 +5,13 @@
 #include "Component.hpp"
 
 class Node;
-//class Component;
 class CollisionShape;
 
 class PhysicsComponent: public Collection<CollisionShape>, public Component {
-public:
+private:
+	friend class Physics;
 	PhysicsComponent(Node &owner);
+public:
 	template<class T>
 	std::shared_ptr<T> getObject(size_t idx) {
 		assert(idx < objects.size());
@@ -25,8 +26,6 @@ public:
 		objects.push_back(std::shared_ptr<CollisionShape>(static_cast<CollisionShape *>(new T)));
         return objects.size()-1;
     }
-
-	bool intersects(PhysicsComponent &other);
 };
 
 #endif

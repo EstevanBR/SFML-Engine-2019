@@ -9,7 +9,8 @@
 class Node;
 
 class GraphicsComponent: public Collection<sf::Drawable>, public Component {
-public:
+private:
+	friend class Graphics;
 	GraphicsComponent(Node &owner);
 };
 

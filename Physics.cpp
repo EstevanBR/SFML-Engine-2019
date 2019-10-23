@@ -1,23 +1,74 @@
+#include <cmath>
 #include "Physics.hpp"
 #include "PhysicsComponent.hpp"
+#include "RectCollisionShape.hpp"
+#include "CircleCollisionShape.hpp"
 
 void Physics::process(float delta) {
-	for (std::shared_ptr<PhysicsComponent> pc1: objects) {
-		for (std::shared_ptr<PhysicsComponent> pc2: objects) {
-			if (pc1.get() == pc2.get()) {
-				continue;
-			}
-			
-			if (pc1->intersects(*pc2.get())) {
-				//
-			} else {
-				//
-			}
+	for (auto a: objects) {
+		for (auto b: objects) {
+			checkCollision(a, b);
 		}
 	}
 }
 
-size_t Physics::createObject(Node &owner) {
-	objects.push_back(std::shared_ptr<PhysicsComponent>(new PhysicsComponent(owner)));
-	return objects.size()-1;
+bool Physics::checkLayerCollision(const CollisionShape &a, const CollisionShape &b) {
+    return a.getLayers() & b.getLayers();
+}
+
+bool Physics::checkCollision(std::shared_ptr<const CollisionShape> a, std::shared_ptr<const CollisionShape> b) {
+    if (Physics::checkLayerCollision(*a, *b) == false) {
+        return false;
+    }
+	auto ar = std::static_pointer_cast<const RectCollisionShape>(a);
+	auto as = std::static_pointer_cast<const CircleCollisionShape>(a);
+	
+	auto br = std::static_pointer_cast<const RectCollisionShape>(b);
+	auto bs = std::static_pointer_cast<const CircleCollisionShape>(b);
+
+	if (ar.get() != nullptr && br.get() != nullptr) {
+		return Physics::checkCollision(*ar,*br);
+	} else if (ar.get() != nullptr && bs.get() != nullptr) {
+		return Physics::checkCollision(*ar,*bs);
+	} else if (as.get() != nullptr && bs.get() != nullptr) {
+		return Physics::checkCollision(*as.get(),*bs.get());
+	} else {
+		return false;
+	}
+	
+}
+
+bool Physics::checkCollision(const RectCollisionShape &rectA, const RectCollisionShape &rectB) {
+	return rectA.intersects(rectB);
+}
+
+bool Physics::checkCollision(const RectCollisionShape &rect, const CircleCollisionShape &circle) {
+    if (rect.contains(circle.x, circle.y) and circle.radius > 0.f) {
+        return true;
+    } else {
+        float testX;
+        float testY;
+
+        float x = rect.left;
+        float y = rect.top;
+
+        if (circle.x < x)                  testX = x;
+        else if (circle.x > x+rect.width)  testX = x+rect.width;
+        if (y < circle.y)                  testY = y;
+        else if (circle.y > y+rect.height) testY = y+rect.height;
+
+        float distX = circle.x-testX;
+        float distY = circle.y-testY;
+        float distance = sqrt((distX * distX) + (distY * distY));
+
+        return distance <= circle.radius;
+    }
+	return false;
+}
+
+bool Physics::checkCollision(const CircleCollisionShape &circleA, const CircleCollisionShape &circleB) {
+    float distX = circleB.x-circleA.x;
+    float distY = circleB.y-circleA.y;
+    float distance = sqrt((distX * distX) + (distY * distY));
+    return distance <= circleA.radius+circleB.radius;
 }

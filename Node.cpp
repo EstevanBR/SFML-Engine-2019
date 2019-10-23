@@ -4,20 +4,20 @@
 bool Node::hasParent() {
     return !parent.expired();
 }
-void Node::setParent(SharedNode p) {
-    parent = WeakNode(p);
+void Node::setParent(std::shared_ptr<Node> p) {
+    parent = std::weak_ptr<Node>(p);
 }
 
-WeakNode Node::getParent()  {
+std::weak_ptr<Node> Node::getParent()  {
     return parent;
 }
 
-SharedNode Node::getChild(size_t idx) {
+std::shared_ptr<Node> Node::getChild(size_t idx) {
     return children[idx];
 }
 
 void Node::addChild(Node *child) {
-    children.push_back(SharedNode(child));
+    children.push_back(std::shared_ptr<Node>(child));
     child->setParent(children.back());
 }
 

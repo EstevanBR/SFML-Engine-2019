@@ -27,7 +27,6 @@ public:
     }
 
     size_t createObject() {
-        //objects.push_back(T());
         objects.push_back(std::shared_ptr<T>(new T));
         return objects.size()-1;
     }

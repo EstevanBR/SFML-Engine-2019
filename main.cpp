@@ -1,6 +1,5 @@
 #include "Game.hpp"
 
 int main() {
-	return Game::main();	
+	return Game().main();	
 }
-

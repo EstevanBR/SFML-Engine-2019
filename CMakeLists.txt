@@ -5,8 +5,6 @@ project(SFML-Engine VERSION 0.1.0)
 
 set(SFML_ENGINE_SOURCES
     main.cpp
-    GameWindow.cpp
-    GameWindow.hpp
     Node.cpp
     Node.hpp
     Collection.hpp
@@ -16,6 +14,7 @@ set(SFML_ENGINE_SOURCES
     CircleCollisionShape.hpp
     CircleCollisionShape.cpp
     CollisionShape.hpp
+    CollisionShape.cpp
     "Message.hpp"
     Component.hpp
     Component.cpp
@@ -35,5 +34,6 @@ set(SFML_ENGINE_SOURCES
 )
 
 add_library(SFML-Engine SHARED ${SFML_ENGINE_SOURCES})
+#add_library(SFML-Engine STATIC ${SFML_ENGINE_SOURCES})
 target_include_directories(SFML-Engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(SFML-Engine -lsfml-graphics -lsfml-window -lsfml-system)
