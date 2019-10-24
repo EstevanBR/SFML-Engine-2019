@@ -12,30 +12,34 @@
 
 class SpriteStack: public Node2D, public sf::Drawable {
 public:
-    //sf::Sprite sprite;
+    float angle = 0.f;
     sf::Texture texture;
-    sf::Vector3i size;
+    sf::Vector3i sprite3DSize;
 
-    SpriteStack(std::string texturePath, sf::Vector3i size) {
-        if (texture.loadFromFile(texturePath)) {
-            size = size;    
-        }
+    SpriteStack(std::string texturePath, sf::Vector3i sprite3DSize) {
+        position = sf::Vector2f(30,64);
         
-
+        this->sprite3DSize = sprite3DSize;
+        if (texture.loadFromFile(texturePath)) {
+            
+        }
     }
+
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override {
         sf::Sprite sprite;
-        
-        for (int i = 0; i < size.z; i++) {
-            std::cout << "DRAW?" << std::endl;
-            sf::IntRect rect = sf::IntRect(sf::Vector2i(size.x * i, 0), sf::Vector2i(size.x, size.y));
-            sprite.setTexture(texture);
+        sprite.setOrigin(sf::Vector2f(sprite3DSize.x / 2, sprite3DSize.y / 2));
+        sprite.setPosition(position);
+        sprite.setTexture(texture);
+        for (int i = 0; i < sprite3DSize.z; i++) {
+            sf::IntRect rect = sf::IntRect(sf::Vector2i(sprite3DSize.x * i, 0), sf::Vector2i(sprite3DSize.x, sprite3DSize.y));
             sprite.setTextureRect(rect);
+            sprite.move(sf::Vector2f(0, -0.707f));
+            sprite.setRotation(angle);
             target.draw(sprite, states);
         }
     }
     ~SpriteStack() {
-
+        std::cout << "SpriteStack::~SpriteStack" << std::endl;
     }
 };
 

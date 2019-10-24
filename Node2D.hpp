@@ -8,8 +8,7 @@ class Node;
 class Node2D: public Node {
 public:
     sf::Transform transform;
-    void process(float delta) override;
-
+    sf::Vector2f position;
 };
 
 #endif

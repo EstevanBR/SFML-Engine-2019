@@ -34,6 +34,7 @@ set(SFML_ENGINE_SOURCES
     Game.cpp
     Game.hpp
     SpriteStack.hpp
+    Tree.hpp
 )
 
 #add_library(SFML-Engine SHARED ${SFML_ENGINE_SOURCES})

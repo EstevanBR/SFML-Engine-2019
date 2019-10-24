@@ -2,6 +2,8 @@
 #define GAME_HPP
 
 #include <memory>
+#include <iostream>
+
 namespace sf {
     class RenderWindow;
 }
@@ -9,14 +11,16 @@ namespace sf {
 class Physics;
 class Graphics;
 class Input;
+class Tree;
 
 class Game {
 protected:
 	sf::RenderWindow &window;
+    std::unique_ptr<Tree> tree;
     std::unique_ptr<Physics> physics;
     std::unique_ptr<Graphics> graphics;
     std::unique_ptr<Input> input;
-    //virtual void initialized(sf::RenderWindow &window, Physics &physics, Graphics &graphics, Input &input) = 0;
+    //virtual void initialized(sf::RenderWindow &window, Tree &tree, Physics &physics, Graphics &graphics, Input &input) {};
 public:
     Game(sf::RenderWindow &window);
     ~Game();
