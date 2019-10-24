@@ -13,6 +13,8 @@ private:
     std::weak_ptr<Node> parent;
 protected:
 public:
+    Node();
+    Node(std::shared_ptr<Node> parent);
     std::string name;
     virtual void process(float delta) {};
     

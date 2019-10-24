@@ -25,9 +25,19 @@ public:
     std::shared_ptr<T> getObject(size_t idx) {
         return objects[idx];
     }
+    template<class D>
+    std::shared_ptr<D> getObject(size_t idx) {
+        return std::static_pointer_cast<D>(getObject(idx));
+    }
 
     size_t createObject() {
         objects.push_back(std::shared_ptr<T>(new T));
+        return objects.size()-1;
+    }
+
+    template<class D>
+    size_t createObject() {
+        objects.push_back(std::shared_ptr<T>(static_cast<T *>(new D)));
         return objects.size()-1;
     }
 };

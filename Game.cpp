@@ -4,14 +4,13 @@
 #include "Graphics.hpp"
 #include "Input.hpp"
 
-Game::Game() {
-}
-
-int Game::main() {
-	sf::RenderWindow window;
+Game::Game(sf::RenderWindow &window):window(window) {
 	physics = std::unique_ptr<Physics>(new Physics);
 	graphics = std::unique_ptr<Graphics>(new Graphics(window));
 	input = std::unique_ptr<Input>(new Input(window));
+}
+
+int Game::main() {
 	sf::Clock deltaClock;
 	
 	while (window.isOpen()) {

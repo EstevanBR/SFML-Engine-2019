@@ -1,5 +1,12 @@
 #include "Node.hpp"
 
+Node::Node() {
+
+}
+
+Node::Node(std::shared_ptr<Node> parent) {
+    setParent(parent);
+}
 
 bool Node::hasParent() {
     return !parent.expired();

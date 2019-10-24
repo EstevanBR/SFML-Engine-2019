@@ -7,6 +7,8 @@ set(SFML_ENGINE_SOURCES
     main.cpp
     Node.cpp
     Node.hpp
+    Node2D.hpp
+    Node2D.cpp
     Collection.hpp
     Collection.cpp
     RectCollisionShape.hpp
@@ -31,9 +33,11 @@ set(SFML_ENGINE_SOURCES
     Input.cpp
     Game.cpp
     Game.hpp
+    SpriteStack.hpp
 )
 
-add_library(SFML-Engine SHARED ${SFML_ENGINE_SOURCES})
+#add_library(SFML-Engine SHARED ${SFML_ENGINE_SOURCES})
 #add_library(SFML-Engine STATIC ${SFML_ENGINE_SOURCES})
+add_executable(SFML-Engine ${SFML_ENGINE_SOURCES})
 target_include_directories(SFML-Engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(SFML-Engine -lsfml-graphics -lsfml-window -lsfml-system)

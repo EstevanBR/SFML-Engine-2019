@@ -2,6 +2,7 @@
 #define COLLISION_SHAPE_HPP
 
 #include <cstdint>
+#include <SFML/Graphics.hpp>
 
 class CollisionShape {
 private:
