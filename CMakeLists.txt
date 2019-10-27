@@ -33,8 +33,16 @@ set(SFML_ENGINE_SOURCES
     Input.cpp
     Game.cpp
     Game.hpp
+    MyGame.hpp
+    MyGame.cpp
     SpriteStack.hpp
+    SpriteStack.cpp
+    MyStack.hpp
+    MyStack.cpp
     Tree.hpp
+    AnimatedSprite.hpp
+    InputComponent.hpp
+    InputComponent.cpp
 )
 
 #add_library(SFML-Engine SHARED ${SFML_ENGINE_SOURCES})

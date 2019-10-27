@@ -8,7 +8,6 @@ class Graphics:public Collection<sf::Drawable> {
 private:
 	sf::RenderWindow &window;
 	friend class Game;
-	void test() {}
 public:
 	Graphics(sf::RenderWindow &window);
 	void draw();

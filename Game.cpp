@@ -5,28 +5,37 @@
 #include "Input.hpp"
 #include "Tree.hpp"
 
-Game::Game(sf::RenderWindow &window):window(window) {
-	tree = std::unique_ptr<Tree>(new Tree);
-	physics = std::unique_ptr<Physics>(new Physics);
-	graphics = std::unique_ptr<Graphics>(new Graphics(window));
-	input = std::unique_ptr<Input>(new Input(window));
-}
+int Game::main(
+		sf::VideoMode mode,
+		const sf::String& title,
+		sf::Uint32 style,
+		const sf::ContextSettings& settings) {
+	sf::RenderWindow window(mode, title, style, settings);
+	window.setPosition(sf::Vector2i(1920/2 - window.getSize().x / 2, 1080/2 - window.getSize().y / 2));
 
-int Game::main() {
-	sf::Clock deltaClock;
+	auto tree = std::unique_ptr<Tree>(new Tree);
+	auto physics = std::unique_ptr<Physics>(new Physics);
+	auto graphics = std::unique_ptr<Graphics>(new Graphics(window));
+	auto input = std::unique_ptr<Input>(new Input(window));
+
+	initialized(window, *tree, *physics, *graphics, *input);
 	
+	sf::Clock deltaClock;
+	deltaClock.restart();
+	float delta = 0.f;
 	while (window.isOpen()) {
-		float delta = deltaClock.restart().asSeconds();
-
+		delta = deltaClock.restart().asSeconds();
+		
 		input->process(delta);
-		physics->process(delta);
 		tree->process(delta);
+		physics->process(delta);
 		graphics->draw();
 	}
 
-	return EXIT_SUCCESS;
-}
+	tree.release();
+	physics.release();
+	graphics.release();
+	input.release();
 
-Game::~Game() {
-	std::cout << "Game::~Game" << std::endl;
+	return EXIT_SUCCESS;
 }

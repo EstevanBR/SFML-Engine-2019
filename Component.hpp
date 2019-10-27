@@ -1,13 +1,14 @@
 #ifndef COMPONENT_HPP
 #define COMPONENT_HPP
 
-class Node;
+#include "Node.hpp"
 
-class Component {
-public:
-	Node &owner;
-	Component(Node &owner);
+template<class T>
+class Component: public Node {
+private:
+	friend T;
+	T &manager;
+	Component(T &manager): manager(manager) {}
 };
-
 
 #endif

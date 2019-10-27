@@ -7,9 +7,10 @@ class Node;
 
 class Tree: public Collection<Node> {
     friend class Game;
+    std::string name = "Tree";
     void process(float delta) {
         for (auto n: objects) {
-            n->process(delta);
+            n->_process(delta);
         }
     }
 };

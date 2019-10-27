@@ -7,11 +7,8 @@
 #include "Collection.hpp"
 
 class Node;
+class Graphics;
 
-class GraphicsComponent: public Collection<sf::Drawable>, public Component {
-private:
-	friend class Graphics;
-	GraphicsComponent(Node &owner);
-};
+class GraphicsComponent: public Component<Graphics> {};
 
 #endif
