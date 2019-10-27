@@ -16,6 +16,10 @@ public:
 	std::string name = "MyStack";
 	MyStack(Tree &tree, Graphics &graphics, Input &input);
 	void process(float delta) override;
+	template <class T>
+	void handleMessage(Message<T> message) {
+		MessageHandler::handleMessage(message);
+	};
 };
 
 
