@@ -44,7 +44,7 @@ void Input::process(float delta) {
             if (code == inputMap.start) handleRelease(userInput.start);
         }
         
-        auto message = Message<UserInput const>("user.input.event", userInput);
+        auto message = Message<UserInput const &>("user.input.event", userInput);
         dispatchMessage(message);
     }
     //log();

@@ -19,7 +19,7 @@ void MyGame::initialized(
 
     view.setSize(window.getSize().x, window.getSize().y);
 
-    myStack = std::shared_ptr<MyStack>(new MyStack(tree, graphics));
+    myStack = std::shared_ptr<MyStack>(new MyStack(tree, graphics, input));
 }
 
 MyGame::~MyGame() {

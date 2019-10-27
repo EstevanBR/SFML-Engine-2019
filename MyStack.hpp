@@ -3,15 +3,21 @@
 
 #include <memory>
 #include "SpriteStack.hpp"
+#include "Message.hpp"
+#include "Input.hpp"
+
 
 class Tree;
 class Graphics;
+class Input;
 
-class MyStack: public SpriteStack {
+class MyStack: public SpriteStack, public MessageHandler {
 public:
 	std::string name = "MyStack";
-	MyStack(Tree &tree, Graphics &graphics);
+	MyStack(Tree &tree, Graphics &graphics, Input &input);
 	void process(float delta) override;
 };
+
+
 
 #endif
