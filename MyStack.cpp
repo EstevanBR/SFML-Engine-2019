@@ -18,7 +18,8 @@ void MyStack::process(float delta) {
     _velocity.x *= _friction.x;
     _velocity.y *= _friction.y;
 
-    position += _velocity;
+    position.x += _velocity.x;
+    position.y += _velocity.y * 0.707f;
 
     angle += delta * 45.f;
 }
