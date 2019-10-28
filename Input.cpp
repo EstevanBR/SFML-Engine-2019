@@ -44,10 +44,10 @@ void Input::process(float delta) {
             if (code == inputMap.start) handleRelease(userInput.start);
         }
         
-        auto message = Message<UserInput const &>("user.input.event", userInput);
-        dispatchMessage(message);
+        
     }
-    //log();
+    auto message = Message<UserInput>("user.input.event", userInput);
+    dispatchMessage(message);
 }
 
 void Input::log() {

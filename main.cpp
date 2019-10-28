@@ -2,5 +2,5 @@
 #include "MyGame.hpp"
 
 int main() {
-	return MyGame().main(sf::VideoMode(640,480), "MyGame", sf::Style::Titlebar|sf::Style::Close);	
+	return MyGame().main(sf::VideoMode(1920,1080), "MyGame", sf::Style::Fullscreen);	
 }

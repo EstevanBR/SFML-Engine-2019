@@ -13,8 +13,8 @@ void MyGame::initialized(
     
     std::cout << "MyGame::initialized" << std::endl;
 
-    window.setVerticalSyncEnabled(false);
-    window.setFramerateLimit(75.f);
+    window.setVerticalSyncEnabled(true);
+    window.setFramerateLimit(60);
     window.setKeyRepeatEnabled(false);
 
     view.setSize(window.getSize().x, window.getSize().y);

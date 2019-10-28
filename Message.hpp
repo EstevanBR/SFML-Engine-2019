@@ -7,30 +7,32 @@
 
 #include "Collection.hpp"
 
-template<class T>
-class Message {
+template<typename T>
+struct Message {
+private:
+    std::string _name;
+    T &_data;
 public:
-    std::string name;
-    T &data;
-    Message(std::string name, T&data): data(data) {
+    const std::string &name = _name;
+    const T &data = _data;
+    
+    Message(std::string name, T&data): _data(data) {
         name = name;
     }
 };
 
-class MessageHandler {
+template<typename T>
+struct MessageHandler {
 public:
-    template<class T>
-    void handleMessage(Message<T> message) {
-        std::cout << "got a message!" << std::endl;
-    }
+    virtual void handleMessage(const Message<T> message) = 0;
 };
 
-class MessageDispatcher: public Collection<MessageHandler> {
+template<typename T>
+struct MessageDispatcher: public Collection<MessageHandler<T>> {
 public:
-    template<class T>
     void dispatchMessage(Message<T> message) {
-        for (auto handler: Collection<MessageHandler>::objects) {
-            handler->handleMessage<T>(message);
+        for (auto handler: Collection<MessageHandler<T>>::objects) {
+            handler->handleMessage(message);
         }
     }
 };

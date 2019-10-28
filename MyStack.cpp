@@ -1,6 +1,7 @@
 #include "MyStack.hpp"
 
 #include <memory>
+#include <cmath>
 #include "Tree.hpp"
 #include "Graphics.hpp"
 #include "Input.hpp"
@@ -9,18 +10,31 @@ std::string name = "MyStack";
 MyStack::MyStack(Tree &tree, Graphics &graphics, Input &input):SpriteStack("icon.png", sf::Vector3i(16, 16, 16)) {
     tree.addObject(std::shared_ptr<Node>(this));
     graphics.addObject(std::shared_ptr<sf::Drawable>(this));
-    
-    auto d = dynamic_cast<MessageDispatcher *>(&input);
-    d->addObject(std::shared_ptr<MessageHandler>(this));
+    input.MessageDispatcher<UserInput>::addObject(std::shared_ptr<MessageHandler<UserInput>>(this));
 }
 
 void MyStack::process(float delta) {
-    angle += delta * 360.f;
+    _velocity += _inputVector * 15.f * delta;
+    _velocity.x *= _friction.x;
+    _velocity.y *= _friction.y;
 
-    position.x += delta * 10.f;
+    position += _velocity;
+
+    angle += delta * 45.f;
 }
 
-template<>
-void MessageHandler::handleMessage<UserInput const &>(Message<UserInput const &> message) {
-	
+void MyStack::handleMessage(Message<UserInput> message) {
+    _inputVector.x = 0.f;
+    _inputVector.y = 0.f;
+
+    _inputVector.x += (message.data.left) ? -1.f : 0.f;
+    _inputVector.x += (message.data.right) ? 1.f : 0.f;
+    _inputVector.y += (message.data.up) ? -1.f : 0.f;
+    _inputVector.y += (message.data.down) ? 1.f : 0.f;
+
+    if (_inputVector.x > 0.f || _inputVector.y > 0.f) {
+        auto s = sqrtf(powf(_inputVector.x, 2.f) + powf(_inputVector.y, 2.f));
+        _inputVector.x /= s;
+        _inputVector.y /= s;
+    }    
 }
