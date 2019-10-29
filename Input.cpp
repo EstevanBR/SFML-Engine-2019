@@ -5,10 +5,8 @@ Input::Input(sf::RenderWindow &window): window(window) {
     
 }
 void Input::handlePress(bool &userInputState) {
-    switch (userInputState) {
-        case false:
-            userInputState = true;
-            break;
+    if (userInputState == false) {
+        userInputState = true;
     }
 }
 void Input::handleRelease(bool &userInputState) {
@@ -43,28 +41,27 @@ void Input::process(float delta) {
             if (code == inputMap.b)     handleRelease(userInput.b);
             if (code == inputMap.start) handleRelease(userInput.start);
         }
-        
-        
     }
+    
     auto message = Message<UserInput>("user.input.event", userInput);
     dispatchMessage(message);
 }
 
-void Input::log() {
-    logState("UP",    userInput.up);
-    logState("DOWN",  userInput.down);
-    logState("LEFT",  userInput.left);
-    logState("RIGHT", userInput.right);
-    logState("A",     userInput.a);
-    logState("B",     userInput.b);
-    logState("START", userInput.start);
-}
-void Input::logState(std::string buttonName, bool const& userInputState) {
-    std::cout << buttonName << ": ";
-    std::cout << ((userInputState == true) ? "PRESSED" : "");
-    //std::cout << ((userInputState == JUST_PRESSED) ? "JUST_PRESSED" : "");
-    std::cout << ((userInputState == false) ? "NOT_PRESSED" : "");
-    //std::cout << ((userInputState == JUST_RELEASED) ? "JUST_RELEASED" : "");
-    std::cout << std::endl;
-    std::cout << std::endl;
-}
+// void Input::log() {
+//     logState("UP",    userInput.up);
+//     logState("DOWN",  userInput.down);
+//     logState("LEFT",  userInput.left);
+//     logState("RIGHT", userInput.right);
+//     logState("A",     userInput.a);
+//     logState("B",     userInput.b);
+//     logState("START", userInput.start);
+// }
+// void Input::logState(std::string buttonName, bool const& userInputState) {
+//     std::cout << buttonName << ": ";
+//     std::cout << ((userInputState == true) ? "PRESSED" : "");
+//     //std::cout << ((userInputState == JUST_PRESSED) ? "JUST_PRESSED" : "");
+//     std::cout << ((userInputState == false) ? "NOT_PRESSED" : "");
+//     //std::cout << ((userInputState == JUST_RELEASED) ? "JUST_RELEASED" : "");
+//     std::cout << std::endl;
+//     std::cout << std::endl;
+// }

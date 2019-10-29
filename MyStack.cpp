@@ -9,7 +9,7 @@
 std::string name = "MyStack";
 MyStack::MyStack(Tree &tree, Graphics &graphics, Input &input):SpriteStack("icon.png", sf::Vector3i(16, 16, 16)) {
     tree.addObject(std::shared_ptr<Node>(this));
-    graphics.addObject(std::shared_ptr<sf::Drawable>(this));
+    graphics.Collection<sf::Drawable>::addObject(std::shared_ptr<sf::Drawable>(this));
     input.MessageDispatcher<UserInput>::addObject(std::shared_ptr<MessageHandler<UserInput>>(this));
 }
 
@@ -19,9 +19,9 @@ void MyStack::process(float delta) {
     _velocity.y *= _friction.y;
 
     position.x += _velocity.x;
-    position.y += _velocity.y * 0.707f;
+    position.y += _velocity.y;
 
-    angle += delta * 45.f;
+    _angle += delta * 180.f;
 }
 
 void MyStack::handleMessage(Message<UserInput> message) {

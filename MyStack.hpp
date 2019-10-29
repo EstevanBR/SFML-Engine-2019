@@ -5,7 +5,7 @@
 #include "SpriteStack.hpp"
 #include "Message.hpp"
 #include "Input.hpp"
-
+#include "PhysicsComponent.hpp"
 
 class Tree;
 class Graphics;
@@ -14,6 +14,7 @@ class UserInput;
 
 class MyStack: public SpriteStack, public MessageHandler<UserInput> {
 private:
+	std::shared_ptr<PhysicsComponent> physicsComponent;
 	sf::Vector2f _inputVector;
 	sf::Vector2f _velocity;
 	sf::Vector2f _friction = sf::Vector2f(0.9f, 0.9f);

@@ -28,7 +28,8 @@ struct UserInput {
 class Input: public Node, public MessageDispatcher<UserInput>  {
 private:
     friend class Game;
-
+    Input(sf::RenderWindow &window);
+    
     UserInputMap inputMap;
     UserInput userInput;
     
@@ -37,10 +38,6 @@ private:
 
     void handlePress(bool &userInputState);
     void handleRelease(bool &userInputState);
-    void log();
-    void logState(std::string buttonName, bool const& userInputState);
-public:
-    Input(sf::RenderWindow &window);
 };
 
 #endif

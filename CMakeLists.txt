@@ -43,6 +43,7 @@ set(SFML_ENGINE_SOURCES
     AnimatedSprite.hpp
     InputComponent.hpp
     InputComponent.cpp
+    # Processor.hpp
 )
 
 #add_library(SFML-Engine SHARED ${SFML_ENGINE_SOURCES})

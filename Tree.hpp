@@ -6,6 +6,7 @@
 class Node;
 
 class Tree: public Collection<Node> {
+private:
     friend class Game;
     std::string name = "Tree";
     void process(float delta) {

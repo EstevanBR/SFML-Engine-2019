@@ -5,9 +5,9 @@ Graphics::Graphics(sf::RenderWindow &window):window(window) {
     
 }
 
-void Graphics::draw() {
+void Graphics::process(float delta) {
     window.clear(sf::Color::Black);
-    for (auto d: objects) {
+    for (auto d: Collection<sf::Drawable>::objects) {
         
         window.draw(*d);
     }

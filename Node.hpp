@@ -5,7 +5,7 @@
 
 #include "Collection.hpp"
 
-class Node: public Collection<Node> {
+class Node: private Collection<Node> {
 private:
     std::weak_ptr<Node> parent;
     void _process(float delta);
@@ -15,7 +15,6 @@ protected:
 public:
     Node();
     Node(std::shared_ptr<Node> parent);
-    std::string name;
     
     void setParent(std::shared_ptr<Node> parent);
     

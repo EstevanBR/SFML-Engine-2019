@@ -5,8 +5,6 @@
 
 class Input;
 
-class InputComponent: public Component<Input> {
-
-};
+class InputComponent: public Component<Input> {};
 
 #endif

@@ -3,14 +3,14 @@
 
 #include <SFML/Graphics.hpp>
 #include "Collection.hpp"
+#include "Node.hpp"
 
-class Graphics:public Collection<sf::Drawable> {
+class Graphics: private Node, public Collection<sf::Drawable> {
 private:
 	sf::RenderWindow &window;
 	friend class Game;
-public:
 	Graphics(sf::RenderWindow &window);
-	void draw();
+	void process(float delta) override;
 };
 
 #endif
