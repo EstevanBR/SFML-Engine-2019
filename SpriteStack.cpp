@@ -1,7 +1,9 @@
 #include "SpriteStack.hpp"
+#include <cmath>
+
 
 SpriteStack::SpriteStack(std::string texturePath, sf::Vector3i sprite3DSize) {
-    position = sf::Vector2f(30,64);
+    position = sf::Vector2f(200,200);
     _sprite3DSize = sprite3DSize;
     if (_texture.loadFromFile(texturePath)) {
         
@@ -20,7 +22,7 @@ void SpriteStack::draw(sf::RenderTarget &target, sf::RenderStates states) const 
     for (int i = 0; i < _sprite3DSize.z; i++) {
         sf::IntRect rect = sf::IntRect(sf::Vector2i(_sprite3DSize.x * i, 0), sf::Vector2i(_sprite3DSize.x, _sprite3DSize.y));
         sprite.setTextureRect(rect);
-        sprite.move(sf::Vector2f(0, -0.707));
+        sprite.move(sf::Vector2f(0, -1.f - (1.f - (sqrtf(2.f) / 2.f))));
         sprite.setRotation(_angle);
         target.draw(sprite, states);
     }
