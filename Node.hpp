@@ -5,10 +5,11 @@
 
 #include "Collection.hpp"
 
-class Node: private Collection<Node> {
+class Node {
 private:
     std::weak_ptr<Node> parent;
     void _process(float delta);
+    std::vector<std::shared_ptr<Node>> nodes;
 protected:
     friend class Tree;
     virtual void process(float delta) = 0;

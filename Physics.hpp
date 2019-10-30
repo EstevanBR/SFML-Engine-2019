@@ -2,17 +2,16 @@
 #define PHYSICS_HPP
 
 #include "Collection.hpp"
+#include "Node.hpp"
 
-class Node;
-class PhysicsComponent;
 class CollisionShape;
 class RectCollisionShape;
 class CircleCollisionShape;
 
-class Physics: public Collection<CollisionShape> {
+class Physics: public Node, public Collection<CollisionShape> {
 private:
 	friend class Game;
-	void process(float delta);
+	void process(float delta) override;
 	static bool checkLayerCollision(const CollisionShape &a, const CollisionShape &b);
 	static bool checkCollision(const RectCollisionShape &a, const RectCollisionShape &b);
 	static bool checkCollision(const RectCollisionShape &a, const CircleCollisionShape &b);

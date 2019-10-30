@@ -1,10 +1,5 @@
 #include "Game.hpp"
-
-#include "Physics.hpp"
-#include "Graphics.hpp"
-#include "Input.hpp"
-#include "Tree.hpp"
-
+#include "Engine.hpp"
 int Game::main(
 		sf::VideoMode mode,
 		const sf::String& title,
@@ -15,13 +10,17 @@ int Game::main(
 	
 	sf::View view = sf::View(sf::FloatRect(0,0,1920 * 0.25, 1080 * 0.25));
 	window.setView(view);
+	
+	
 
 	auto tree = std::unique_ptr<Tree>(new Tree);
 	auto physics = std::unique_ptr<Physics>(new Physics);
 	auto graphics = std::unique_ptr<Graphics>(new Graphics(window));
 	auto input = std::unique_ptr<Input>(new Input(window));
 
-	initialized(window, *tree, *physics, *graphics, *input);
+	Engine engine(*graphics, *input, *physics, *tree, window);
+
+	initialized(engine);
 
 	sf::Clock deltaClock;
 	deltaClock.restart();

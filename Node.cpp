@@ -6,7 +6,7 @@ Node::Node() {
 
 void Node::_process(float delta) {
     process(delta);
-    for (auto n: objects) {
+    for (auto n: nodes) {
         n->process(delta);
     }
 }

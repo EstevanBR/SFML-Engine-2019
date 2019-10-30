@@ -27,9 +27,10 @@ public:
         return objects[idx];
     }
 
-    void addObject(std::shared_ptr<T> t) {
-        
-        objects.push_back(t);
+    template<class D>
+    size_t addObject(std::shared_ptr<D> d) {
+        objects.push_back(std::static_pointer_cast<T>(d));
+        return objects.size()-1;
     }
 };
 

@@ -5,6 +5,11 @@
 
 class Input;
 
-class InputComponent: public Component<Input> {};
+template<class Owner>
+class InputComponent: public Component<Input, Owner> {
+    friend class Input;
+protected:
+    InputComponent(Input &input, Owner &owner):Component<Input, Owner>(input, owner) {}
+};
 
 #endif

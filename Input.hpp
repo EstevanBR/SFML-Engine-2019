@@ -2,7 +2,7 @@
 #define INPUT_HPP
 
 #include <SFML/Graphics.hpp>
-#include "Message.hpp"
+//#include "Message.hpp"
 #include "Node.hpp"
 
 struct UserInputMap {
@@ -25,19 +25,22 @@ struct UserInput {
     bool start = false;
 };
 
-class Input: public Node, public MessageDispatcher<UserInput>  {
+class Input: public Node {
 private:
     friend class Game;
-    Input(sf::RenderWindow &window);
     
     UserInputMap inputMap;
-    UserInput userInput;
+    UserInput _userInput;
+    sf::RenderWindow &_window;
+
+    Input(sf::RenderWindow &window);
     
-    sf::RenderWindow &window;
     void process(float delta) override;
 
     void handlePress(bool &userInputState);
     void handleRelease(bool &userInputState);
+public:
+    const UserInput &userInput = _userInput;
 };
 
 #endif

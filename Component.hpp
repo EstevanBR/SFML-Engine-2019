@@ -3,12 +3,14 @@
 
 #include "Node.hpp"
 
-template<class T>
+template<class Subsystem, class Owner>
 class Component: public Node {
 private:
-	friend T;
-	T &manager;
-	Component(T &manager): manager(manager) {}
+	friend Subsystem;
+protected:
+	Subsystem &subsystem;
+	Owner &owner;
+	Component(Subsystem &subsystem, Owner &owner): owner(owner), subsystem(subsystem) {}
 };
 
 #endif

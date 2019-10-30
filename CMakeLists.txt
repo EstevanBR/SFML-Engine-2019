@@ -33,6 +33,7 @@ set(SFML_ENGINE_SOURCES
     AnimatedSprite.hpp
     InputComponent.hpp
     InputComponent.cpp
+    Engine.hpp
 )
 add_library(SFML-Engine ${SFML_ENGINE_SOURCES})
 target_include_directories (SFML-Engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

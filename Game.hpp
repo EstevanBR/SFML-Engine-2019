@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
+class Engine;
 
 class Physics;
 class Graphics;
@@ -13,7 +14,7 @@ class Tree;
 
 class Game {
 protected:
-    virtual void initialized(sf::RenderWindow &window, Tree &tree, Physics &physics, Graphics &graphics, Input &input) = 0;
+    virtual void initialized(Engine &engine) = 0;
 public:
     int main(sf::VideoMode mode, const sf::String& title, sf::Uint32 style = sf::Style::Default, const sf::ContextSettings& settings = sf::ContextSettings());
 };
