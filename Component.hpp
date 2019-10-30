@@ -2,6 +2,7 @@
 #define COMPONENT_HPP
 
 #include "Node.hpp"
+#include "Collection.hpp"
 
 template<class Subsystem, class Owner>
 class Component: public Node {
