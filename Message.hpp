@@ -28,10 +28,10 @@ public:
 };
 
 template<typename T>
-struct MessageDispatcher: public Collection<MessageHandler<T>> {
+struct MessageDispatcher: public Collection<MessageHandler<T> > {
 public:
     void dispatchMessage(Message<T> message) {
-        for (auto handler: Collection<MessageHandler<T>>::objects) {
+        for (auto handler: Collection<MessageHandler<T> >::objects) {
             handler->handleMessage(message);
         }
     }

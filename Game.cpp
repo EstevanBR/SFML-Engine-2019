@@ -8,17 +8,13 @@ int Game::main(
 	sf::RenderWindow window(mode, title, style, settings);
 	window.setPosition(sf::Vector2i(1920/2 - window.getSize().x / 2, 1080/2 - window.getSize().y / 2));
 	
-	sf::View view = sf::View(sf::FloatRect(0,0,1920 * 0.25, 1080 * 0.25));
-	window.setView(view);
-	
-	
-
+	Camera camera(sf::FloatRect(0,0,1920 * 0.25, 1080 * 0.25));
 	auto tree = std::unique_ptr<Tree>(new Tree);
 	auto physics = std::unique_ptr<Physics>(new Physics);
 	auto graphics = std::unique_ptr<Graphics>(new Graphics(window));
 	auto input = std::unique_ptr<Input>(new Input(window));
 
-	Engine engine(*graphics, *input, *physics, *tree, window);
+	Engine engine(*graphics, *input, *physics, *tree, window, camera);
 
 	initialized(engine);
 

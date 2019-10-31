@@ -8,7 +8,7 @@ class Node {
 private:
     std::weak_ptr<Node> _parent;
     void _process(float delta);
-    std::vector<std::shared_ptr<Node>> _nodes;
+    std::vector<std::shared_ptr<Node> > _nodes;
 protected:
     friend class Tree;
     virtual void process(float delta) = 0;
