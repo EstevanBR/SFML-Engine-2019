@@ -1,6 +1,7 @@
 set(CMAKE_CXX_STANDARD 17)
 
 set(SFML_ENGINE_SOURCES
+    Math.hpp
     Node.cpp
     Node.hpp
     Node2D.hpp

@@ -8,7 +8,7 @@ class RectCollisionShape;
 
 class CircleCollisionShape: public CollisionShape, public FloatCircle {
 public:
-    CircleCollisionShape(float x = 0, float y = 0, float radius = 0);
+    CircleCollisionShape(PhysicsComponent &physicsComponent, float x = 0, float y = 0, float radius = 0);
 };
 
 #endif

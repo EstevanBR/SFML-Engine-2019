@@ -3,6 +3,7 @@
 
 #include "Collection.hpp"
 #include "Node.hpp"
+#include <map>
 
 class CollisionShape;
 class RectCollisionShape;

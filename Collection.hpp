@@ -28,9 +28,9 @@ public:
     }
 
     template<class D>
-    size_t addObject(std::shared_ptr<D> d) {
+    std::shared_ptr<D> addObject(std::shared_ptr<D> d) {
         objects.push_back(std::static_pointer_cast<T>(d));
-        return objects.size()-1;
+        return d;
     }
 };
 

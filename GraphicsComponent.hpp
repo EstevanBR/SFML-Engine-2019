@@ -6,9 +6,10 @@
 class Graphics;
 
 template<class Owner>
-class GraphicsComponent: public Component<Graphics, Owner> {
+class GraphicsComponent: public Component {
     friend class Graphics;
-    GraphicsComponent(Owner &owner):Component<Graphics, Owner>(owner) {}
+protected:
+    GraphicsComponent(Engine &engine, Owner &owner):Component(engine) {}
 };
 
 #endif

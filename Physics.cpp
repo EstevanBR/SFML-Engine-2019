@@ -5,15 +5,29 @@
 #include "CircleCollisionShape.hpp"
 
 void Physics::process(float delta) {
+    //collisions.clear();
 	for (auto a: objects) {
 		for (auto b: objects) {
-			checkCollision(a, b);
+			if (a->id != b->id && checkCollision(a, b)) {
+                
+                a->_physicsComponent.collided(*b);
+                b->_physicsComponent.collided(*a);
+                //collisions.push_back(std::make_pair<size_t, size_t>(a->id, b->id);
+                //collisions.push_back(std::map<size_t, size_t>(a->id, b->id));
+                //collisions.push_back(std::map<size_t, size_t>(b->id, a->id));
+                
+                // collisions.insert_or_assign(a.get(), b.get());
+                // collisions.insert_or_assign(b.get(), a.get());
+                //collisions[a->id][b->id] = true;
+                //a->_colliding.push_back(std::weak_ptr<CollisionShape>(b));
+                //b->_colliding.push_back(std::weak_ptr<CollisionShape>(a));
+            }
 		}
 	}
 }
 
 bool Physics::checkLayerCollision(const CollisionShape &a, const CollisionShape &b) {
-    return a.getLayers() & b.getLayers();
+    return a.getLayers() & b.getLayers() || a.getLayers() == b.getLayers();
 }
 
 bool Physics::checkCollision(std::shared_ptr<const CollisionShape> a, std::shared_ptr<const CollisionShape> b) {

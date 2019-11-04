@@ -1,4 +1,10 @@
 #include "CollisionShape.hpp"
+#include "PhysicsComponent.hpp"
+CollisionShape::CollisionShape(PhysicsComponent &physicsComponent): _physicsComponent(physicsComponent) {
+    static size_t count = 0;
+    _id = count;
+    count++;
+}
 
 void CollisionShape::setLayers(uint16_t v) {
     layers = v;

@@ -2,14 +2,23 @@
 #define PHYSICS_COMPONENT_HPP
 
 #include "Component.hpp"
+#include "Engine.hpp"
 
 class Physics;
 
-template<class Owner>
-class PhysicsComponent: public Component<Physics, Owner> {
+class PhysicsComponent: public Component {
     friend class Physics;
 protected:
-    PhysicsComponent(Physics &physics, Owner &owner):Component<Physics, Owner>(physics, owner) {}
+    PhysicsComponent(Engine &engine):Component(engine) {}
+    virtual void collided(CollisionShape &other) = 0;
+};
+
+template <class Owner>
+class EntityPhysicsComponent: public PhysicsComponent {
+    friend class Physics;
+protected:
+    Owner &owner;
+    EntityPhysicsComponent(Engine &engine, Owner &owner):PhysicsComponent(engine), owner(owner) {}
 };
 
 #endif

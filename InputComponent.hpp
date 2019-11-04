@@ -2,14 +2,15 @@
 #define INPUT_COMPONENT_HPP
 
 #include "Component.hpp"
+#include "Engine.hpp"
 
 class Input;
 
 template<class Owner>
-class InputComponent: public Component<Input, Owner> {
+class InputComponent: public Component {
     friend class Input;
 protected:
-    InputComponent(Input &input, Owner &owner):Component<Input, Owner>(input, owner) {}
+    InputComponent(Engine &engine, Owner &owner):Component(engine) {}
 };
 
 #endif

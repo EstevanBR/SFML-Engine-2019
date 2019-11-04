@@ -9,7 +9,7 @@ class RectCollisionShape:public sf::FloatRect, public CollisionShape {
 public:
     sf::RectangleShape rectShape;
     
-    RectCollisionShape(float left = 0, float top = 0, float width = 0, float height = 0);
+    RectCollisionShape(PhysicsComponent &physicsComponent, float left = 0, float top = 0, float width = 0, float height = 0);
 };
 
 #endif
