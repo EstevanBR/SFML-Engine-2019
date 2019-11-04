@@ -2,10 +2,8 @@
 #define NODE_2D_HPP
 
 #include <SFML/Graphics.hpp>
-#include "Node.hpp"
-class Node;
 
-class Node2D: public Node {
+class Object2D {
 public:
     sf::Transform transform;
     sf::Vector2f position;

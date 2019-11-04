@@ -6,19 +6,19 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Node2D.hpp"
+#include "Object2D.hpp"
 
 //class Node2D;
 
-class SpriteStack: public Node2D, public sf::Drawable {
+class SpriteStack: public sf::Drawable, public Object2D {
 private:
     friend class Game;
     sf::Texture _texture;
     sf::Vector3i _sprite3DSize;
 protected:
-    float _angle = 0.f;
-    SpriteStack(std::string texturePath, sf::Vector3i sprite3DSize);
 public:
+    float angle = 0.f;
+    SpriteStack(std::string texturePath, sf::Vector3i sprite3DSize);
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
     ~SpriteStack();
 };

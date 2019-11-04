@@ -4,8 +4,8 @@ set(SFML_ENGINE_SOURCES
     Math.hpp
     Node.cpp
     Node.hpp
-    Node2D.hpp
-    Node2D.cpp
+    Object2D.hpp
+    Object2D.cpp
     Collection.hpp
     Collection.cpp
     RectCollisionShape.hpp
