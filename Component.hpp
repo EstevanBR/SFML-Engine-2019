@@ -3,17 +3,13 @@
 
 #include "Node.hpp"
 #include "Collection.hpp"
+#include "Engine.hpp"
 
-class Engine;
-
-template<class Owner>
 class Component: public Node {
 private:
 protected:
-	Owner &owner;
-	Component(Engine &engine, Owner &owner): owner(owner) {
-		engine.tree.add_object();
-	}
+	Engine &engine;
+	Component(Engine &engine);	
 };
 
 #endif
