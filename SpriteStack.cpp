@@ -1,7 +1,6 @@
 #include "SpriteStack.hpp"
 #include <cmath>
-
-#define TAU 6.28318530718f
+#include "Math.hpp"
 
 SpriteStack::SpriteStack(std::string texturePath, sf::Vector3i sprite3DSize) {
     _sprite3DSize = sprite3DSize;
@@ -23,16 +22,10 @@ void SpriteStack::draw(sf::RenderTarget &target, sf::RenderStates states) const 
         sf::IntRect rect = sf::IntRect(sf::Vector2i(_sprite3DSize.x * i, 0), sf::Vector2i(_sprite3DSize.x, _sprite3DSize.y));
         sprite.setTextureRect(rect);
 
-        auto p = sf::Vector2f(0, -0.7071067811865476f);
+        auto p = sf::Vector2f(0, -math::SQDAG);
 
-        auto newP = sf::Vector2f();
-
-        auto degrees = TAU * (-angle / 360.f);
-
-        newP.x = (p.x * cosf(degrees)) - (p.y * sinf(degrees));
-        newP.y = (p.y * cosf(degrees)) + (p.x * sinf(degrees));
-
-        sprite.move(newP);
+        auto radians = math::degreesToRadians(angle);
+        sprite.move(math::rotateAroundOrigin(radians, p));
 
         target.draw(sprite, states);
     }

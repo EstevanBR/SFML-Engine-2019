@@ -4,23 +4,15 @@
 #include <cmath>
 #include <SFML/System.hpp>
 
-template<typename T>
-sf::Vector2<T> Normalize(sf::Vector2<T> vector) {
-    if (fabs(vector.x) > 0.f || fabs(vector.y) > 0.f) {
-        auto s = sqrtf(powf(vector.x, 2.f) + powf(vector.y, 2.f));
-        vector.x /= s;
-        vector.y /= s;
-    } else {
-        // vector was 0,0
-        return sf::Vector2<T>(0,0);
-    }
-}
+namespace math {
+    extern const float TAU;
+    extern const float PI;
+    extern const float SQRT2;
+    extern const float SQDAG;
 
-float RandomFloat(float a, float b) {
-    float random = ((float) rand()) / (float) RAND_MAX;
-    float diff = b - a;
-    float r = random * diff;
-    return a + r;
+    sf::Vector2f normalized(sf::Vector2f vector);
+    float degreesToRadians(float angleInDegrees);
+    sf::Vector2f rotateAroundOrigin(float radians, sf::Vector2f point);
 }
 
 #endif // MATH_HPP
