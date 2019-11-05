@@ -19,8 +19,16 @@ namespace math {
         }
     }
 
+    float angleTo(sf::Vector2f from, sf::Vector2f to) {
+        return atan2f(to.y - to.x, from.y - from.x);
+    }
+
     float degreesToRadians(float angleInDegrees) {
         return TAU * (-angleInDegrees / 360.f);
+    }
+
+    float radiansToDegrees(float angleInRadians) {
+        return angleInRadians * 180.f / PI;
     }
 
     sf::Vector2f rotateAroundOrigin(float radians, sf::Vector2f point) {
@@ -31,6 +39,9 @@ namespace math {
         rotatedPoint.y = (point.y * cosf(radians)) + (point.x * sinf(radians));
 
         return rotatedPoint;
+    }
 
+    float dot(sf::Vector2f a, sf::Vector2f b) {
+        return a.x * b.x + a.y * b.y;
     }
 }
