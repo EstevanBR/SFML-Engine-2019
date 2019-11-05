@@ -16,14 +16,14 @@ void SpriteStack::draw(sf::RenderTarget &target, sf::RenderStates states) const 
     sf::Sprite sprite;
 
 
-    sprite.setOrigin(sf::Vector2f(_sprite3DSize.x / 2, _sprite3DSize.y / 2));
+    sprite.setOrigin(sf::Vector2f(_sprite3DSize.x / 2, -_sprite3DSize.y / 2));
     sprite.setPosition(position);
     sprite.setTexture(_texture);
     for (int i = 0; i < _sprite3DSize.z; i++) {
         sf::IntRect rect = sf::IntRect(sf::Vector2i(_sprite3DSize.x * i, 0), sf::Vector2i(_sprite3DSize.x, _sprite3DSize.y));
         sprite.setTextureRect(rect);
 
-        auto p = sf::Vector2f(0, -0.707f);
+        auto p = sf::Vector2f(0, -0.7071067811865476f);
 
         auto newP = sf::Vector2f();
 
