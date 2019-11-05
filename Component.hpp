@@ -6,11 +6,14 @@
 
 class Engine;
 
+template<class Owner>
 class Component: public Node {
 private:
 protected:
-	Engine &engine;
-	Component(Engine &engine);
+	Owner &owner;
+	Component(Engine &engine, Owner &owner): owner(owner) {
+		engine.tree.add_object();
+	}
 };
 
 #endif
