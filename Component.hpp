@@ -2,8 +2,8 @@
 #define COMPONENT_HPP
 
 #include "Node.hpp"
-#include "Collection.hpp"
-#include "Engine.hpp"
+
+class Engine;
 
 class Component: public Node {
 private:

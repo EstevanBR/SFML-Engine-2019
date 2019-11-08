@@ -1,5 +1,7 @@
 #include "SpriteStack.hpp"
 #include <cmath>
+#include <cstdint>
+#include <iostream>
 #include "Math.hpp"
 
 SpriteStack::SpriteStack(std::string texturePath, sf::Vector3i sprite3DSize) {

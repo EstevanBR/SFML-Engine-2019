@@ -4,12 +4,14 @@
 #include "Component.hpp"
 #include "Engine.hpp"
 
+class Component;
 class Physics;
+class CollisionShape;
 
 class PhysicsComponent: public Component {
     friend class Physics;
 protected:
-    PhysicsComponent(Engine &engine):Component(engine) {}
+    PhysicsComponent(Engine &engine);
     virtual void collided(CollisionShape &other) = 0;
 };
 

@@ -5,12 +5,8 @@
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
-class Engine;
 
-class Physics;
-class Graphics;
-class Input;
-class Tree;
+class Engine;
 
 class Game {
 protected:

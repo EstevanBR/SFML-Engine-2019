@@ -3,7 +3,6 @@
 
 #include <SFML/Graphics.hpp>
 #include "CollisionShape.hpp"
-class CircleCollisionShape;
 
 class RectCollisionShape:public sf::FloatRect, public CollisionShape {
 public:

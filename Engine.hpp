@@ -2,17 +2,12 @@
 #define ENGINE_HPP
 
 #include <SFML/Graphics.hpp>
-#include "Physics.hpp"
-#include "Graphics.hpp"
-#include "Input.hpp"
-#include "Tree.hpp"
 
-class Camera: public sf::View {
-public:
-    Camera(sf::FloatRect floatRect): sf::View(floatRect) {
-
-    }
-};
+class Physics;
+class Input;
+class Tree;
+class Graphics;
+class Camera;
 
 struct Engine {
     Graphics &graphics;
@@ -21,10 +16,7 @@ struct Engine {
     Tree &tree;
     sf::RenderWindow &window;
     Camera &camera;
-    Engine(Graphics &graphics, Input &input, Physics &physics, Tree &tree, sf::RenderWindow &window, Camera &camera):
-        graphics(graphics), input(input), tree(tree), physics(physics), window(window), camera(camera) {
-
-    }
+    Engine(Graphics &graphics, Input &input, Physics &physics, Tree &tree, sf::RenderWindow &window, Camera &camera);
 };
 
 #endif

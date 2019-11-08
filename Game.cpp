@@ -1,5 +1,11 @@
 #include "Game.hpp"
 #include "Engine.hpp"
+#include "Tree.hpp"
+#include "Physics.hpp"
+#include "Camera.hpp"
+#include "Graphics.hpp"
+#include "Input.hpp"
+
 int Game::main(
 		sf::VideoMode mode,
 		const sf::String& title,

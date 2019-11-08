@@ -5,6 +5,7 @@ set(SFML_ENGINE_SOURCES
     Math.cpp
     Node.cpp
     Node.hpp
+    Camera.hpp
     Object2D.hpp
     Object2D.cpp
     Collection.hpp
@@ -34,10 +35,12 @@ set(SFML_ENGINE_SOURCES
     SpriteStack.hpp
     SpriteStack.cpp
     Tree.hpp
+    Tree.cpp
     AnimatedSprite.hpp
     InputComponent.hpp
     InputComponent.cpp
     Engine.hpp
+    Engine.cpp
 )
 add_library(SFML-Engine ${SFML_ENGINE_SOURCES})
 target_include_directories (SFML-Engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

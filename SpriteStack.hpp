@@ -1,14 +1,8 @@
 #ifndef SPRITE_STACK_HPP
 #define SPRITE_STACK_HPP
 
-#include <cstdint>
-#include <iostream>
-
 #include <SFML/Graphics.hpp>
-
 #include "Object2D.hpp"
-
-//class Node2D;
 
 class SpriteStack: public sf::Drawable, public Object2D {
 private:

@@ -1,2 +1,5 @@
 #include "PhysicsComponent.hpp"
-#include "CollisionShape.hpp"
+
+PhysicsComponent::PhysicsComponent(Engine &engine): Component(engine) {
+
+}

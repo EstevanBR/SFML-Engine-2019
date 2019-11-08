@@ -1,5 +1,9 @@
 #include <cmath>
+#include <map>
 #include "Physics.hpp"
+#include "Collection.hpp"
+#include "Node.hpp"
+
 #include "PhysicsComponent.hpp"
 #include "RectCollisionShape.hpp"
 #include "CircleCollisionShape.hpp"

@@ -4,8 +4,8 @@
 #include "Collection.hpp"
 #include "Node.hpp"
 #include <map>
+#include "CollisionShape.hpp"
 
-class CollisionShape;
 class RectCollisionShape;
 class CircleCollisionShape;
 
