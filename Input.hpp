@@ -2,7 +2,6 @@
 #define INPUT_HPP
 
 #include <SFML/Graphics.hpp>
-//#include "Message.hpp"
 #include "Node.hpp"
 
 struct UserInputMap {
