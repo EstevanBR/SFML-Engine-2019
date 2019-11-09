@@ -29,7 +29,6 @@ int Game::main(
 	float delta = 0.f;
 	while (window.isOpen()) {
 		delta = deltaClock.restart().asSeconds();
-		
 		input->process(delta);
 		tree->process(delta);
 		physics->process(delta);

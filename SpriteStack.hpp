@@ -3,12 +3,13 @@
 
 #include <SFML/Graphics.hpp>
 #include "Object2D.hpp"
+#include "TextureManager.hpp"
 
 class SpriteStack: public sf::Drawable, public Object2D {
 private:
     friend class Game;
-    sf::Texture _texture;
     sf::Vector3i _sprite3DSize;
+    std::string _texturePath;
 protected:
 public:
     float angle = 0.f;
