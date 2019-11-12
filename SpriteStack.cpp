@@ -22,7 +22,7 @@ void SpriteStack::draw(sf::RenderTarget &target, sf::RenderStates states) const 
             sf::IntRect rect = sf::IntRect(sf::Vector2i(_sprite3DSize.x * i, 0), sf::Vector2i(_sprite3DSize.x, _sprite3DSize.y));
             sprite.setTextureRect(rect);
 
-            auto p = sf::Vector2f(0, -math::SQDAG);
+            auto p = sf::Vector2f(0, -math::sqrt2 * 0.5f);
 
             auto radians = math::degreesToRadians(-target.getView().getRotation());
             sprite.move(math::rotateAroundOrigin(radians, p));
