@@ -15,8 +15,8 @@ void SpriteStack::draw(sf::RenderTarget &target, sf::RenderStates states) const 
 
     auto texture = TextureManager::getTexture(_texturePath);
     if (!texture.expired()) {
-        sprite.setOrigin(sf::Vector2f(_sprite3DSize.x / 2, -_sprite3DSize.y / 2));
-        sprite.setPosition(position);
+        sprite.setOrigin(sf::Vector2f(_sprite3DSize.x / 2, _sprite3DSize.y / 2));
+        sprite.setPosition(getPosition());
         sprite.setTexture(*texture.lock());
         for (int i = 0; i < _sprite3DSize.z; i++) {
             sf::IntRect rect = sf::IntRect(sf::Vector2i(_sprite3DSize.x * i, 0), sf::Vector2i(_sprite3DSize.x, _sprite3DSize.y));

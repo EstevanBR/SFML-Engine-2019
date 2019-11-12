@@ -6,8 +6,9 @@ set(SFML_ENGINE_SOURCES
     Node.cpp
     Node.hpp
     Camera.hpp
-    Object2D.hpp
-    Object2D.cpp
+    Camera.cpp
+    #Object2D.hpp
+    #Object2D.cpp
     Collection.hpp
     Collection.cpp
     RectCollisionShape.hpp

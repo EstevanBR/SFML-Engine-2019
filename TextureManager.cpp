@@ -1,6 +1,6 @@
 #include "TextureManager.hpp"
 
-std::map<std::string, std::shared_ptr<sf::Texture> > TextureManager::_textures;
+std::map<std::string, std::shared_ptr<sf::Texture>> TextureManager::_textures;
 
 bool TextureManager::_loadTexture(const std::string fileName) {
 

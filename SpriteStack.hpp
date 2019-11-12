@@ -2,10 +2,9 @@
 #define SPRITE_STACK_HPP
 
 #include <SFML/Graphics.hpp>
-#include "Object2D.hpp"
 #include "TextureManager.hpp"
 
-class SpriteStack: public sf::Drawable, public Object2D {
+class SpriteStack: public sf::Drawable, public sf::Transformable {
     friend class Game;
     sf::Vector3i _sprite3DSize;
     std::string _texturePath;

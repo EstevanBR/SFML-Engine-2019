@@ -5,9 +5,7 @@
 
 class Camera: public sf::View {
 public:
-    Camera(sf::FloatRect floatRect): sf::View(floatRect) {
-
-    }
+    Camera(sf::FloatRect floatRect);
 };
 
 

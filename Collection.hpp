@@ -18,7 +18,7 @@ private:
         );
     }
 protected:
-    std::vector<std::shared_ptr<T> > objects;
+    std::vector<std::shared_ptr<T>> objects;
 public:
     ~Collection() {}
     Collection() {}
