@@ -32,6 +32,10 @@ int Game::main(
 		input->process(delta);
 		tree->process(delta);
 		physics->process(delta);
+		
+		camera.rotate(delta * 10.f);
+		window.setView(camera);
+		
 		graphics->process(delta);
 	}
 

@@ -1,15 +1,16 @@
 #include <iostream>
 #include "Graphics.hpp"
 
-Graphics::Graphics(sf::RenderWindow &window):window(window) {
+Graphics::Graphics(sf::RenderWindow &window):
+    _window(window) {
     
 }
 
 void Graphics::process(float delta) {
-    window.clear(sf::Color::Black);
+    _window.clear(sf::Color::Black);
     for (auto d: Collection<sf::Drawable>::objects) {
         
-        window.draw(*d);
+        _window.draw(*d);
     }
-    window.display();
+    _window.display();
 }

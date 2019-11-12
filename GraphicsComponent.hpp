@@ -9,9 +9,8 @@ template<class Owner>
 class GraphicsComponent: public Component {
     friend class Graphics;
 protected:
-    GraphicsComponent(Engine &engine, Owner &owner): Component(engine) {
-        
-    }
+    const Graphics &graphics;
+    GraphicsComponent(Graphics &graphics, Tree &tree, Owner &owner): Component(tree), graphics(graphics) {}
 };
 
 #endif

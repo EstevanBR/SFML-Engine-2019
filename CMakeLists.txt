@@ -43,6 +43,8 @@ set(SFML_ENGINE_SOURCES
     Engine.cpp
     TextureManager.hpp
     TextureManager.cpp
+    BillboardSprite.hpp
+    BillboardSprite.cpp
 )
 add_library(SFML-Engine ${SFML_ENGINE_SOURCES})
 target_include_directories (SFML-Engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

@@ -7,7 +7,7 @@
 
 class Graphics: private Node, public Collection<sf::Drawable> {
 private:
-	sf::RenderWindow &window;
+	sf::RenderWindow &_window;
 	friend class Game;
 	Graphics(sf::RenderWindow &window);
 	void process(float delta) override;

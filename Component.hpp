@@ -3,13 +3,12 @@
 
 #include "Node.hpp"
 
-class Engine;
+class Tree;
 
 class Component: public Node {
 private:
 protected:
-	Engine &engine;
-	Component(Engine &engine);	
+	Component(Tree &tree);
 };
 
 #endif

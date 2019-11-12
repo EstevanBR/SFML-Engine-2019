@@ -10,7 +10,7 @@ template<class Owner>
 class InputComponent: public Component {
     friend class Input;
 protected:
-    InputComponent(Engine &engine, Owner &owner):Component(engine) {}
+    InputComponent(Tree &tree, Owner &owner):Component(tree) {}
 };
 
 #endif

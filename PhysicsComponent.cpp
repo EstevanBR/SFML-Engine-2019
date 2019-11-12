@@ -1,5 +1,5 @@
 #include "PhysicsComponent.hpp"
 
-PhysicsComponent::PhysicsComponent(Engine &engine): Component(engine) {
+PhysicsComponent::PhysicsComponent(Physics &physics, Tree &tree): Component(tree) {
 
 }

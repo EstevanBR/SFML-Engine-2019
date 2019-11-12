@@ -1,7 +1,6 @@
 #include "Component.hpp"
-#include "Engine.hpp"
 #include "Tree.hpp"
 
-Component::Component(Engine &engine): engine(engine) {
-    engine.tree.addObject<Component>(std::shared_ptr<Component>(this));
+Component::Component(Tree &tree) {
+    tree.addObject<Component>(std::shared_ptr<Component>(this));
 }
