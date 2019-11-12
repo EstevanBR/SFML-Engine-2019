@@ -18,4 +18,4 @@ namespace math {
     float angleTo(sf::Vector2f from, sf::Vector2f to);
 }
 
-#endif // MATH_HPP
+#endif

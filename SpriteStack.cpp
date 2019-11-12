@@ -24,7 +24,7 @@ void SpriteStack::draw(sf::RenderTarget &target, sf::RenderStates states) const 
 
             auto p = sf::Vector2f(0, -math::SQDAG);
 
-            auto radians = math::degreesToRadians(angle);
+            auto radians = math::degreesToRadians(-target.getView().getRotation());
             sprite.move(math::rotateAroundOrigin(radians, p));
 
             target.draw(sprite, states);

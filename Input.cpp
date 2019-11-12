@@ -46,7 +46,4 @@ void Input::process(float delta) {
             if (code == inputMap.start) handleRelease(_userInput.start);
         }
     }
-    // for (auto ic: objects) {
-    //     ic->handleInput(userInput);
-    // }
 }

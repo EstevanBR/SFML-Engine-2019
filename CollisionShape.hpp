@@ -12,7 +12,6 @@ class CollisionShape {
 private:
     friend class Physics;
     uint16_t layers = 0;
-    //std::vector<std::weak_ptr<CollisionShape>> _colliding;
     size_t _id;
     PhysicsComponent &_physicsComponent;
 public:

@@ -14,4 +14,4 @@ public:
     static std::weak_ptr<sf::Texture> getTexture(const std::string fileName);
 };
 
-#endif // TextureManager_HPP
+#endif

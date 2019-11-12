@@ -19,7 +19,6 @@ bool Node::hasParent() {
     return !_parent.expired();
 }
 void Node::setParent(std::shared_ptr<Node> p) {
-    //p->addObject<Node>(p);
     _parent = std::weak_ptr<Node>(p);
 }
 
